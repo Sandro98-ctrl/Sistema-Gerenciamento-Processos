@@ -1,5 +1,6 @@
 ﻿using Gerenciador.Processos.Data.Models;
 using Gerenciador.Processos.Data.Pagination;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +11,9 @@ namespace Gerenciador.Processos.Data.Repositories
         Task<CustomerModel> CreateAsync(CustomerModel entity, CancellationToken cancellationToken);
 
         Task DeleteAsync(CustomerModel entity, CancellationToken cancellationToken);
-        
+
+        Task<List<CustomerModel>> GetAllAsync(CancellationToken cancellationToken);
+
         Task<PaginatedList<CustomerModel>> GetAllAsync(PageableFilter filter, CancellationToken cancellationToken);
 
         Task<CustomerModel> GetAsync(long id, CancellationToken cancellationToken);

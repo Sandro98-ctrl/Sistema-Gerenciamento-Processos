@@ -1,6 +1,7 @@
 ﻿using Gerenciador.Processos.Data.Context;
 using Gerenciador.Processos.Data.Models;
 using Gerenciador.Processos.Data.Pagination;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,6 +31,11 @@ namespace Gerenciador.Processos.Data.Repositories
         public async Task<CustomerModel> GetAsync(long id, CancellationToken cancellationToken)
         {
             return await _context.Customers.FindAsync(new object[] { id }, cancellationToken);
+        }
+
+        public Task<List<CustomerModel>> GetAllAsync(CancellationToken cancellationToken)
+        {
+            return Task.Run(() => _context.Customers.ToList(), cancellationToken);
         }
 
         public async Task<PaginatedList<CustomerModel>> GetAllAsync(PageableFilter filter, CancellationToken cancellationToken)

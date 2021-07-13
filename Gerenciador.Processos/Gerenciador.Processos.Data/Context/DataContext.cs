@@ -8,7 +8,7 @@ namespace Gerenciador.Processos.Data.Context
     {
         public DataContext(DbContextOptions options) : base(options)
         {
-            //Database.EnsureDeleted();
+            Database.EnsureDeleted();
             Database.CreateAndPopulate();
         }
 

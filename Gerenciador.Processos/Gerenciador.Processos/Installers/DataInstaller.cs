@@ -23,6 +23,7 @@ namespace Gerenciador.Processos.Installers
 
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IProcessService, ProcessService>();
+            services.AddScoped<ITestCasesService, TestCasesService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProcessRepository, ProcessRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

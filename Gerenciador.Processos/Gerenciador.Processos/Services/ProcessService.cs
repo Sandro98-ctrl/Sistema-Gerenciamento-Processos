@@ -23,9 +23,9 @@ namespace Gerenciador.Processos.Services
         private readonly ILogger<ProcessService> _logger;
 
         public ProcessService(IProcessRepository processRepository,
-                              ICustomerRepository customerRepository,
-                              IUnitOfWork unitOfWork,
-                              ILogger<ProcessService> logger)
+            ICustomerRepository customerRepository,
+            IUnitOfWork unitOfWork,
+            ILogger<ProcessService> logger)
         {
             _processRepository = processRepository;
             _customerRepository = customerRepository;
