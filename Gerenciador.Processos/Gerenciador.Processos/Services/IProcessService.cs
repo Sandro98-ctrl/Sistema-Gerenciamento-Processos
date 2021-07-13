@@ -14,5 +14,7 @@ namespace Gerenciador.Processos.Services
         Task<Result> GetProcessAsync(long id, CancellationToken cancellationToken);
         
         Task<Result> GetProcessesAsync(PageableQuery query, CancellationToken cancellationToken);
+
+        Task<Result> DeleteProcessAsync(long id, CancellationToken cancellationToken);
     }
 }

@@ -7,7 +7,6 @@ using Gerenciador.Processos.Data.Models;
 using Gerenciador.Processos.Data.Pagination;
 using Gerenciador.Processos.Data.Repositories;
 using Gerenciador.Processos.Data.UnitOfWork;
-using Gerenciador.Processos.Helpers;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using System.Threading;
@@ -17,7 +16,7 @@ namespace Gerenciador.Processos.Services
 {
     public class CustomerService : BaseService, ICustomerService
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly ICustomerRepository _customerRepository; 
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CustomerService> _logger;
 
@@ -84,7 +83,7 @@ namespace Gerenciador.Processos.Services
 
         public async Task<Result> DeleteCustomerAsync(long id, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Checando se cliente existe: {id}");
+            _logger.LogInformation($"Checando se o cliente existe: {id}");
 
             var customer = await _customerRepository.GetAsync(id, cancellationToken);
 

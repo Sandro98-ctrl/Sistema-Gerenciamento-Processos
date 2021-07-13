@@ -67,12 +67,29 @@ namespace Gerenciador.Processos.Services
         {
             _logger.LogInformation($"Obtendo processo: {id}");
 
-            var customer = await _processRepository.GetAsync(id, cancellationToken);
+            var process = await _processRepository.GetAsync(id, cancellationToken);
 
-            if (customer is null)
-                throw new BadRequestException($"Cliente com Id: {id} não encontrado");
+            if (process is null)
+                throw new BadRequestException($"Processo com Id: {id} não encontrado");
 
-            return SuccessDataResult(customer.Adapt<GetProcessResponse>());
+            return SuccessDataResult(process.Adapt<GetProcessResponse>());
+        }
+
+        public async Task<Result> DeleteProcessAsync(long id, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation($"Checando se o processo existe: {id}");
+
+            var process = await _processRepository.GetAsync(id, cancellationToken);
+
+            if (process is null)
+                throw new BadRequestException($"Processo com Id: {id} não encontrado");
+
+            _logger.LogInformation($"Deletando processo: {id}");
+
+            await _processRepository.DeleteAsync(process, cancellationToken);
+            await _unitOfWork.CommitAsync();
+
+            return SuccessResult();
         }
     }
 }

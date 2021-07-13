@@ -40,5 +40,11 @@ namespace Gerenciador.Processos.Controllers.v1
         {
             return Ok(await _processService.GetProcessAsync(id, cancellationToken));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProcess(long id, CancellationToken cancellationToken)
+        {
+            return Ok(await _processService.DeleteProcessAsync(id, cancellationToken));
+        }
     }
 }
