@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerenciador.Processos", "Gerenciador.Processos\Gerenciador.Processos.csproj", "{5BBF5A1E-33C4-4E00-A8D9-F5EFDBB1406F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gerenciador.Processos", "Gerenciador.Processos\Gerenciador.Processos.csproj", "{5BBF5A1E-33C4-4E00-A8D9-F5EFDBB1406F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerenciador.Processos.Data", "Gerenciador.Processos.Data\Gerenciador.Processos.Data.csproj", "{ED43716F-88B2-4EFB-84AB-ABE2DADED703}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gerenciador.Processos.Data", "Gerenciador.Processos.Data\Gerenciador.Processos.Data.csproj", "{ED43716F-88B2-4EFB-84AB-ABE2DADED703}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerenciador.Processos.Tests", "Gerenciador.Processos.Tests\Gerenciador.Processos.Tests.csproj", "{9448DBCC-1D78-41DE-9CD2-C40E873C30FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gerenciador.Processos.Tests", "Gerenciador.Processos.Tests\Gerenciador.Processos.Tests.csproj", "{9448DBCC-1D78-41DE-9CD2-C40E873C30FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{ECDBC11D-7031-4568-9BFF-A982BD73C11C}"
+	ProjectSection(SolutionItems) = preProject
+		populate_customer.sql = populate_customer.sql
+		populate_processes.sql = populate_processes.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

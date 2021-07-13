@@ -41,6 +41,12 @@ namespace Gerenciador.Processos.Controllers.v1
             return Ok(await _customerService.GetCustomerAsync(id, cancellationToken));
         }
 
+        [HttpPut("{id}/name")]
+        public async Task<IActionResult> UpdateCustomerName(long id, UpdateCustomerNameRequest request, CancellationToken cancellationToken)
+        {
+            return Ok(await _customerService.UpdateCustomerNameAsync(id, request, cancellationToken));
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(long id, CancellationToken cancellationToken)
         {

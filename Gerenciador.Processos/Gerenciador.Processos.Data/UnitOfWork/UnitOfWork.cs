@@ -5,9 +5,9 @@ namespace Gerenciador.Processos.Data.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DataContext _context;
+        private readonly IDataContext _context;
 
-        public UnitOfWork(DataContext context)
+        public UnitOfWork(IDataContext context)
         {
             _context = context;
         }

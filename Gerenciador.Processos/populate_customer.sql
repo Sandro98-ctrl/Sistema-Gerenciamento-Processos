@@ -1,0 +1,2 @@
+INSERT INTO customers (id, `name`, cnpj, `state`) VALUES (1, 'Empresa A', '00000000000001', 'Rio de Janeiro');
+INSERT INTO customers (id, `name`, cnpj, `state`) VALUES (2, 'Empresa B', '00000000000002', 'São Paulo');

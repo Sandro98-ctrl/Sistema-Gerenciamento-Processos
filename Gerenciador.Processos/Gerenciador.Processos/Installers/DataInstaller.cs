@@ -5,7 +5,6 @@ using Gerenciador.Processos.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.IO;
 using System.Reflection;
 
 namespace Gerenciador.Processos.Installers
@@ -14,27 +13,19 @@ namespace Gerenciador.Processos.Installers
     {
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
-            //DeleteDatabase();
-
-            services.AddDbContext<DataContext>(options =>
+            services.AddDbContext<IDataContext, DataContext>(options =>
             {
                 var stringConnection = configuration.GetConnectionString("default");
 
-                options.UseSqlite(stringConnection, 
+                options.UseSqlite(stringConnection,
                     options => options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName));
             });
 
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IProcessService, ProcessService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProcessRepository, ProcessRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-        }
-
-        private static void DeleteDatabase()
-        {
-            const string dbName = "sqlitedbtest";
-
-            if (File.Exists(dbName))
-                File.Delete(dbName);
         }
     }
 }

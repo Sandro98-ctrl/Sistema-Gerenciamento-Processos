@@ -16,5 +16,7 @@ namespace Gerenciador.Processos.Services
         Task<Result> GetCustomerAsync(long id, CancellationToken cancellationToken);
 
         Task<Result> GetCustomersAsync(PageableQuery query, CancellationToken cancellationToken);
+
+        Task<Result> UpdateCustomerNameAsync(long id, UpdateCustomerNameRequest request, CancellationToken cancellationToken);
     }
 }

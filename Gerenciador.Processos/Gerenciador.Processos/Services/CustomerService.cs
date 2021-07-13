@@ -7,6 +7,7 @@ using Gerenciador.Processos.Data.Models;
 using Gerenciador.Processos.Data.Pagination;
 using Gerenciador.Processos.Data.Repositories;
 using Gerenciador.Processos.Data.UnitOfWork;
+using Gerenciador.Processos.Helpers;
 using Mapster;
 using Microsoft.Extensions.Logging;
 using System.Threading;
@@ -62,6 +63,23 @@ namespace Gerenciador.Processos.Services
                 throw new BadRequestException($"Cliente com Id: {id} não encontrado");
 
             return SuccessDataResult(customer.Adapt<GetCustomerResponse>());
+        }
+
+        public async Task<Result> UpdateCustomerNameAsync(long id, UpdateCustomerNameRequest request, CancellationToken cancellationToken)
+        {
+            _logger.LogInformation($"Atualizando nome do cliente: {id} - {request.Name}");
+
+            var customer = await _customerRepository.GetAsync(id, cancellationToken);
+
+            if (customer is null)
+                throw new BadRequestException($"Cliente com Id: {id} não encontrado");
+
+            customer.Name = request.Name;
+
+            await _customerRepository.UpdateAsync(customer, cancellationToken);
+            await _unitOfWork.CommitAsync();
+
+            return SuccessDataResult(customer.Adapt<UpdateCustomerResponse>());
         }
 
         public async Task<Result> DeleteCustomerAsync(long id, CancellationToken cancellationToken)

@@ -9,9 +9,9 @@ namespace Gerenciador.Processos.Data.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly DataContext _context;
+        private readonly IDataContext _context;
 
-        public CustomerRepository(DataContext context)
+        public CustomerRepository(IDataContext context)
         {
             _context = context;
         }
